@@ -1,0 +1,29 @@
+*{margin:0;padding:0}
+#jc_con{
+	width:500px;
+	height:300px;
+	margin:20px auto;
+	padding:0;
+	background-color: rgba(25,25,25,0.1);
+}
+
+
+img{
+	width:499px;
+	height:180px;
+	display:block;
+	border-bottom: 1px;
+	margin-bottom: 20px;
+}
+
+#ff{
+	display:block;
+	margin-left:120px;
+}
+
+input[name="login"]{
+	margin-top:10px;
+	margin-left:10px;
+	display:block;
+	width:230px;
+}
