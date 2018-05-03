@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    <hibernate-mapping package="com.hc.ktdm.model">
+    	<class name="Course" table="course">
+    		<id name="cid" column="cid">
+    			<generator class="native"></generator>
+    		</id>
+    		<property name="cname" column="cname"/>
+    		<set name="students" table="sc_mid" cascade="save-update">
+    			<key column="c_id"/>
+    			<many-to-many class="Student" column="s_id"/>
+    		</set>
+    	</class>
+    </hibernate-mapping>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    <hibernate-mapping package="com.hc.ktdm.model">
+    	<class name="Manager" table="manager">
+    		<id name="mid" column="mid">
+    			<generator class="native"></generator>
+    		</id>
+    		<property name="mname" column="mname"/>
+    		<property name="sex" column="sex"/>
+    		<property name="age" column="age"/>
+    		<property name="password" column="password"/>
+    	</class>
+    </hibernate-mapping>

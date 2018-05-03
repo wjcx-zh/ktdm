@@ -29,8 +29,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<div id="jc_con">
 	    <div id="jc_panel" >
 	    	<img alt="背景图" src="/ktdm/imgs/ktdm.png">   
-		    <a name="a1" href="/ktdm/login.action?choose=1">管理员登录</a>   
-		    <a name="a2" href="/ktdm/login.action?choose=2">教师登录</a>   
+		    <a name="a1" href="/ktdm/loginpage.action?choose=1">管理员登录</a>   
+		    <a name="a2" href="/ktdm/loginpage.action?choose=2">教师登录</a>   
 		</div>  
 	</div>
   </body>

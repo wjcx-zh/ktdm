@@ -1,0 +1,31 @@
+*{margin:0;padding:0}
+#jc_con{
+	width:500px;
+	height:300px;
+	margin:20px auto;
+	padding:0;
+	background-color: rgba(25,25,25,0.1);
+}
+
+
+img{
+	width:499px;
+	height:180px;
+	display:block;
+	border-bottom: 1px;
+	margin-bottom: 20px;
+}
+
+.msg{
+	width:500px;
+	height:120px;
+	color:greenyellow;
+}
+
+h1{
+	font-size: 40px;
+	line-height:40px;
+	font-weight: bold;
+	margin:30px auto;
+	text-align: center;
+}

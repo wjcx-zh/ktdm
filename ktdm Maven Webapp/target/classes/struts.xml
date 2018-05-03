@@ -3,7 +3,29 @@
 	"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
 	"http://struts.apache.org/dtds/struts-2.5.dtd">
 	<struts>
-		<package name="ktdm" namespace="/ktdm" extends="struts-default">
+		<constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+		<package name="ktdm" namespace="/" extends="struts-default">
+			<global-allowed-methods>regex:.*</global-allowed-methods>
+			<action name="loginpage" class="loginpageAction">
+				<result>/WEB-INF/views/login.jsp</result>
+			</action>
+			<action name="login_2" class="teacherLoginAction">
+				<result>/WEB-INF/views/sign.jsp</result>
+				<result name="input">/WEB-INF/views/login.jsp</result>
+			</action>
 			
+			<action name="signup" class="signupAction">
+				<result>/WEB-INF/views/success.jsp</result>
+			</action>
+		</package>
+		<!-- ajax调用spring中的action -->
+		<package name="ajax_json" namespace="/" extends="json-default">
+		 	
+			<action name="attachCourses" class="attachCoursesAction" method="attach">
+				<result name="success" type="json"/>
+			</action>
+			<action name="signImg" class="signImgAction" method="generate">
+				<result name="success" type="json"/>
+			</action>
 		</package>
 	</struts>

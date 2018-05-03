@@ -12,6 +12,61 @@
         http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	<!-- dao层的bean -->
+	<bean id="teacherDao" class="com.hc.ktdm.dao.impl.TeacherDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
 	
-
+	<bean id="studentDao" class="com.hc.ktdm.dao.impl.StudentDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="nameTableDao" class="com.hc.ktdm.dao.impl.NameTableDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="typeDao" class="com.hc.ktdm.dao.impl.TypeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<!-- service层的bean -->
+	<bean id="teacherLoginService" class="com.hc.ktdm.service.impl.TeacherLoginServiceImpl">
+		<property name="teacherDao" ref="teacherDao"/>
+	</bean>
+	
+	<bean id="teacherService" class="com.hc.ktdm.service.impl.TeacherServiceImpl">
+		<property name="teacherDao" ref="teacherDao"/>
+	</bean>
+	
+	<bean id="signUpService" class="com.hc.ktdm.service.impl.SignUpServiceImpl">
+		<property name="studentDao" ref="studentDao"></property>
+	</bean>
+	
+	<bean id="nameTableService" class="com.hc.ktdm.service.impl.NameTableServiceImpl">
+		<property name="nameTableDao" ref="nameTableDao"></property>
+	</bean>
+	
+	<bean id="typeService" class="com.hc.ktdm.service.impl.TypeServiceImpl">
+		<property name="typeDao" ref="typeDao"></property>
+	</bean>
+	
+	<!-- action的bean -->
+	<bean id="loginpageAction" class="com.hc.ktdm.handler.LoginPageAction" scope="prototype"></bean>
+	
+	<bean id="teacherLoginAction" class="com.hc.ktdm.handler.LoginAction" scope="prototype">
+		<property name="loginService" ref="teacherLoginService"></property>
+	</bean>
+	
+	<bean id="attachCoursesAction" class="com.hc.ktdm.handler.AttachCoursesAction" scope="prototype">
+		<property name="teacherService" ref="teacherService"></property>
+	</bean>
+	<bean id="signImgAction" class="com.hc.ktdm.handler.SignImgAction" scope="prototype"/>
+	
+	<bean id="signupAction" class="com.hc.ktdm.handler.SignUpAction" scope="prototype">
+		<property name="signUpService" ref="signUpService"></property>
+		<property name="nameTableService" ref="nameTableService"/>
+		<property name="teacherService" ref="teacherService"></property>
+		<property name="typeService" ref="typeService"></property>
+	</bean>	
+	
 </beans>

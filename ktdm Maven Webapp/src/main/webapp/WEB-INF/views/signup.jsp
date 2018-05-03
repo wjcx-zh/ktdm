@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -22,20 +23,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="/ktdm/easy_ui/jquery.min.js"></script>   
 	<script type="text/javascript" src="/ktdm/easy_ui/jquery.easyui.min.js"></script> 
 	<script type="text/javascript" src="/ktdm/easy_ui/locale/easyui-lang-zh_CN.js"></script> 
+	<script type="text/javascript" src="/ktdm/js/signup.js"></script>
 
   </head>
   
   <body>
   	<div id="jc_con">
   		<img alt="背景图" src="/ktdm/imgs/ktdm.png">
-	    <form id="ff" action="/ktdm/login.action" method="post">   
+  		<s:fielderror/>
+	    <form id="ff" action="/ktdm/signup.action?tid=${param.tid}&cid=${param.cid}&cname=${param.cname}" method="post">   
 		    <div>   
 		        <label for="name" style="width:60px;display:inline-block">姓 名:</label>   
 		        <input class="easyui-validatebox" type="text" name="name" data-options="required:true" />   
 		    </div>   
 		    <div>   
-		        <label for="stunum" style="width:60px;display:inline-block;">学 号:</label>   
-		        <input class="easyui-validatebox" type="text" name="stunum" data-options="validType:'password'" />   
+		        <label for="snum" style="width:60px;display:inline-block;">学 号:</label>   
+		        <input class="easyui-validatebox" type="text" name="snum" data-options="validType:'password'" />   
 		    </div>   
 		    <input name="login" type="submit" value="签到"/>   
 		</form>  

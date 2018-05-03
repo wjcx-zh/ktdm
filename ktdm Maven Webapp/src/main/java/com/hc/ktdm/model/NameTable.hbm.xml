@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    <hibernate-mapping package="com.hc.ktdm.model">
+    	<class name="NameTable" table="signup">
+    		<id name="id" column="id">
+    			<generator class="native"/>
+    		</id>
+    		<property name="sname" column="sname"/>
+    		<property name="tname" column="tname"/>
+    		<property name="cname" column="cname"/>
+    		<property name="signtime" column="signtime"/>
+    		<property name="snum" column="snum"/>
+    		<many-to-one name="type" class="Type" column="tp_id" cascade="save-update"/>
+    	</class>
+    </hibernate-mapping>

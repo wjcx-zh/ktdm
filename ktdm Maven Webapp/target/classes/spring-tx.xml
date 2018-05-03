@@ -18,6 +18,21 @@
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="Exists" isolation="DEFAULT" propagation="REQUIRED"/>
+			<tx:method name="add*" isolation="DEFAULT" propagation="REQUIRED"/>
+			<tx:method name="remove*" isolation="DEFAULT" propagation="REQUIRED"/>
+			<tx:method name="modify*" isolation="DEFAULT" propagation="REQUIRED"/>
+			<tx:method name="find*" isolation="DEFAULT" propagation="REQUIRED" read-only="true"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<aop:config>
+		<aop:pointcut expression="execution(* *..service.*.*(..))" id="myPointcut"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="myPointcut"/>
+	</aop:config>
+	
 	<!-- 开启事务注解扫描 -->
-	<tx:annotation-driven transaction-manager="transactionManager"/>
+	<!-- <tx:annotation-driven transaction-manager="transactionManager"/> -->
 </beans>

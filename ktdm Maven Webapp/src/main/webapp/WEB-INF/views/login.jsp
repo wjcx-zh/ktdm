@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -28,7 +29,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   	<div id="jc_con">
   		<img alt="背景图" src="/ktdm/imgs/ktdm.png">
-	    <form id="ff" action="/ktdm/login.action" method="post">   
+  		<s:fielderror/>
+	    <form id="ff" action="/ktdm/login_${choose}.action" method="post">   
 		    <div>   
 		        <label for="name" style="width:60px;display:inline-block">用户名:</label>   
 		        <input class="easyui-validatebox" type="text" name="name" data-options="required:true" />   

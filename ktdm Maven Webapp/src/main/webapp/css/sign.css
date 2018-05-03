@@ -12,23 +12,24 @@
 }
 #jc_con .jc_north .jc_msg{
 	position:absolute;
-	width:100px;
+	width:200px;
 	height:20px;
 	right:0;
 	bottom:0;
 }
 
-.jc_hide_id{
-	width:20px;
-	display:none;
-}
+
 .jc_show_name{
 	/* position:absolute;
 	right:0;
 	bottom:0; */
+	
 	float:right;
 	margin-right:10px;
 	color:white;
+}
+i{
+	font-size:14px;
 }
 .jc_show_name a{
 	color:white;
@@ -80,8 +81,9 @@
   display: block;
   position: relative;
   overflow: hidden;
-  opacity: 0;
-  filter: alpha(opacity=0); }
+  opacity: 1;
+  padding-top:14px;
+   }
 
 .show-img {
   margin: auto;

@@ -8,12 +8,19 @@
 			<property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
 			<!-- c3p0 -->
 			<!-- <property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property> -->
+			<!-- 当前session上下文环境：与Spring整合[SSH]时，将当前session管理交由Spring容器，Spring容器中会有事务环境 -->
+	 		<property name="hibernate.current_session_context_class">org.springframework.orm.hibernate5.SpringSessionContext</property>
 			<!-- 格式化sql输出 -->
 			<property name="hibernate.show_sql">true</property>
 			<property name="hibernate.format_sql">true</property>
 			<property name="hibernate.hbm2ddl.auto">update</property>
 			
 			<!-- 这里配置映射文件 -->
-			
+			<mapping resource="com/hc/ktdm/model/Teacher.hbm.xml"/>
+			<mapping resource="com/hc/ktdm/model/Course.hbm.xml"/>
+			<mapping resource="com/hc/ktdm/model/Student.hbm.xml"/>
+			<mapping resource="com/hc/ktdm/model/Manager.hbm.xml"/>
+			<mapping resource="com/hc/ktdm/model/Type.hbm.xml"/>
+			<mapping resource="com/hc/ktdm/model/NameTable.hbm.xml"/>
 		</session-factory>
 	</hibernate-configuration>
