@@ -30,6 +30,9 @@ public class SignUpAction {
 		Teacher teacher =teacherService.findById(tid);
 		int typeId=signUpService.Exists(name, snum, cid);
 		Type tp=typeService.findById(typeId);
+		if(nameTableService.Exists(name, snum)){
+			return "successed";
+		}
 		NameTable nameTable=new NameTable();
 		nameTable.setCname(cname);
 		nameTable.setSigntime(new Date());

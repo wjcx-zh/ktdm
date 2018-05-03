@@ -55,10 +55,12 @@
 	
 	<bean id="teacherLoginAction" class="com.hc.ktdm.handler.LoginAction" scope="prototype">
 		<property name="loginService" ref="teacherLoginService"></property>
+		<!-- <property name="nameTableService" ref="nameTableService"></property> -->
 	</bean>
 	
 	<bean id="attachCoursesAction" class="com.hc.ktdm.handler.AttachCoursesAction" scope="prototype">
 		<property name="teacherService" ref="teacherService"></property>
+		<property name="nameTableService" ref="nameTableService"></property>
 	</bean>
 	<bean id="signImgAction" class="com.hc.ktdm.handler.SignImgAction" scope="prototype"/>
 	
@@ -69,4 +71,7 @@
 		<property name="typeService" ref="typeService"></property>
 	</bean>	
 	
+	<bean id="signUpInfoAction" class="com.hc.ktdm.handler.SignUpInfoAction" scope="prototype">
+		<property name="nameTableService" ref="nameTableService"/>
+	</bean>
 </beans>

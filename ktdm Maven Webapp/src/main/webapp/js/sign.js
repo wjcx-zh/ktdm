@@ -1,6 +1,11 @@
 $(function(){
 	attach_courses();
     $('#img').click(function(){
+    	//alert($("#kb").combobox("getValue"));
+    	if($("#kb").combobox("getValue")==0){
+    		alert("请选择课程!");
+    		return false;
+    	}
     	$('#show-table').css("display","none");
     	$('#show-img').html("");
     	$(this).addClass('selected');
@@ -23,19 +28,36 @@ $(function(){
         $('#show-table').css("display","block");
         $(this).addClass('selected');
         $('#table').css("display","block");
-        $.getJSON('StudentInfo.json',function(data){//k.2从后台获取签到的StudentInfo.json文件
-            $('#show-table').empty();
-           
-          
-            var strHTML='';
-            $.each(data,function(InfoIndex,Info){
-                strHTML+='学号：'+Info['num']+' '+'姓名：'+Info['name']+"<br>";
-            })
-            $("#show-table").html(strHTML);
+        $.ajax({//k.2从后台获取签到信息
+        	url:"/ktdm/signupInfo.action",
+        	type:"POST",
+        	data:'',
+        	success:function(data){
+        		$('#show-table').empty();
+        		console.log(data.result);
+	    		var table=$("<table style='width:800px'>").append($("<tr>").append($("<th >学号</th>"))
+    					.append($("<th >姓名</th>")).append($("<th >课程</th>"))
+    					.append($("<th >教师</th>")).append($("<th >签到时间</th>"))
+    					.append($("<th >类别</th>")));
+	    		
+	    		$.each(data.result,function(index,info){
+	    			console.log(info +" "+index);
+	    			fullfilling(index,info,table);
+	    			
+	    		});
+	    		$("#show-table").append(table);
+        	},      
         });
     })
 })
 
+function fullfilling(index,info,table){
+	var tr=$("<tr>");
+	tr.append($("<td >").html(info.snum)).append($("<td >").html(info.sname))
+	  .append($("<td >").html(info.cname)).append($("<td >").html(info.tname))
+	  .append($("<td >").html(info.signtime)).append($("<td >").html(info.type.type));
+	table.append(tr)
+}
 function attach_courses(){
 	$.ajax({
 		url:"/ktdm/attachCourses.action",
@@ -59,6 +81,28 @@ function attach_courses(){
 	});
 }
 
+function clear_table_data(){
+	$.ajax({
+		url:"/ktdm/clearData.action",
+		type:'POST',
+		data:{
+			
+		},
+		success:function(data){
+			console.log(data.result);
+			var courses=$("#kb");
+			var option=$("#kb option")[0].text;
+			var dataList=[];
+			dataList.push({"value":0,"text":option});
+			$.each(data.result,function(index,course){
+				dataList.push({"value":course.cid,"text":course.cname});
+			});
+			courses.combobox("loadData",dataList);
+			courses.combobox("select",0);
+		},
+		dataType:'json',
+	});
+}
 function imgData(){
 	var cid=$("#kb").combobox("getValue");
 	var cname=$("#kb").combobox("getText");

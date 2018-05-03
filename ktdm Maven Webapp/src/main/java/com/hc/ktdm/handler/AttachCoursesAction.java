@@ -5,6 +5,7 @@ package com.hc.ktdm.handler;
 import org.apache.struts2.json.annotations.JSON;
 
 import com.hc.ktdm.model.Teacher;
+import com.hc.ktdm.service.NameTableService;
 import com.hc.ktdm.service.TeacherService;
 
 public class AttachCoursesAction {
@@ -12,12 +13,20 @@ public class AttachCoursesAction {
 	private Object result;
 	private TeacherService teacherService;
 	private Integer tid;
-
+	private NameTableService nameTableService;
 	public Object attach(){
+		nameTableService.removeAllInfo();
 		Teacher teacher=teacherService.findById(tid);
 		result=teacher.getCourses();
 		System.out.println(result);
 		return "success";
+	}
+	@JSON(serialize=false)
+	public NameTableService getNameTableService() {
+		return nameTableService;
+	}
+	public void setNameTableService(NameTableService nameTableService) {
+		this.nameTableService = nameTableService;
 	}
 	@JSON(serialize=false)
 	public TeacherService getTeacherService() {

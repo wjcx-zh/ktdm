@@ -6,6 +6,7 @@ import org.apache.struts2.ServletActionContext;
 
 import com.hc.ktdm.model.Teacher;
 import com.hc.ktdm.service.LoginService;
+import com.hc.ktdm.service.NameTableService;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class LoginAction extends ActionSupport {
@@ -25,6 +26,8 @@ public class LoginAction extends ActionSupport {
 		return "input";
 	}
 	
+	
+
 	public String getName() {
 		return name;
 	}
@@ -49,5 +52,5 @@ public class LoginAction extends ActionSupport {
 	public void setLoginService(LoginService loginService) {
 		this.loginService = loginService;
 	}
-	
+
 }

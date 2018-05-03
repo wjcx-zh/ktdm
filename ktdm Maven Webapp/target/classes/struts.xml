@@ -16,6 +16,7 @@
 			
 			<action name="signup" class="signupAction">
 				<result>/WEB-INF/views/success.jsp</result>
+				<result name="successed">/WEB-INF/views/successed.jsp</result>
 			</action>
 		</package>
 		<!-- ajax调用spring中的action -->
@@ -25,6 +26,9 @@
 				<result name="success" type="json"/>
 			</action>
 			<action name="signImg" class="signImgAction" method="generate">
+				<result name="success" type="json"/>
+			</action>
+			<action name="signupInfo" class="signUpInfoAction" method="info">
 				<result name="success" type="json"/>
 			</action>
 		</package>
