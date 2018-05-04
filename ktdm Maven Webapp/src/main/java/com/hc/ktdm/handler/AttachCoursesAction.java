@@ -18,7 +18,7 @@ public class AttachCoursesAction {
 		nameTableService.removeAllInfo();
 		Teacher teacher=teacherService.findById(tid);
 		result=teacher.getCourses();
-		System.out.println(result);
+		//System.out.println(result);
 		return "success";
 	}
 	@JSON(serialize=false)

@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 
+import com.hc.ktdm.model.Manager;
 import com.hc.ktdm.model.Teacher;
 import com.hc.ktdm.service.LoginService;
 import com.hc.ktdm.service.NameTableService;
@@ -26,7 +27,16 @@ public class LoginAction extends ActionSupport {
 		return "input";
 	}
 	
-	
+	public String backstageLogin(){
+		Manager manager=(Manager) loginService.Exists(name, password);
+		HttpSession session=ServletActionContext.getRequest().getSession();
+		if(manager!=null){
+			session.setAttribute("manager", manager);
+			return "success";
+		}
+		
+		return "input";
+	}
 
 	public String getName() {
 		return name;

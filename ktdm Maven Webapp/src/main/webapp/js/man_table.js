@@ -1,0 +1,41 @@
+$(function(){
+	$("#man_tool").load("tool.html",function(){});
+	$("#wins").load("user_add.html",function(){
+		$("user_add").dialog({
+			width:360,
+			title:'新增管理员',
+			modal:true,
+			closed:true,
+			buttons:[{
+				text:'提交',
+				handler:function(){
+					if($("#user_add").form("validate")){
+						$.ajax({
+							url:'/ktdm/user_add.action',
+							type:'POST',
+							data:{
+								name:$('input[name=name]').val(),
+								password:$('input[name=password]').val(),
+								sex:$('input[name=sex]').val(),
+								age:$('input[name=age]').val(),
+								role:1
+							},
+							beforeSend:function(){
+								
+							},
+							success:function(){
+								
+							},
+						},{
+							text:'取消',
+							handler:function(){
+								$('#user_add').form('reset');
+								$("#user_add").dialog('close');
+							}
+						});
+					}
+				}
+			}],
+		});
+	});
+})

@@ -14,6 +14,11 @@
 				<result name="input">/WEB-INF/views/login.jsp</result>
 			</action>
 			
+			<action name="login_1" class="managerLoginAction" method="backstageLogin">
+				<result>/WEB-INF/views/backstage.jsp</result>
+				<result name="input">/WEB-INF/views/login.jsp</result>
+			</action>
+			
 			<action name="signup" class="signupAction">
 				<result>/WEB-INF/views/success.jsp</result>
 				<result name="successed">/WEB-INF/views/successed.jsp</result>

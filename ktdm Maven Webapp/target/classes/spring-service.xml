@@ -17,6 +17,10 @@
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	
+	<bean id="managerDao" class="com.hc.ktdm.dao.impl.ManagerDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
 	<bean id="studentDao" class="com.hc.ktdm.dao.impl.StudentDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
@@ -32,6 +36,10 @@
 	<!-- service层的bean -->
 	<bean id="teacherLoginService" class="com.hc.ktdm.service.impl.TeacherLoginServiceImpl">
 		<property name="teacherDao" ref="teacherDao"/>
+	</bean>
+	
+	<bean id="managerLoginService" class="com.hc.ktdm.service.impl.ManagerLoginServiceImpl">
+		<property name="managerDao" ref="managerDao"/>
 	</bean>
 	
 	<bean id="teacherService" class="com.hc.ktdm.service.impl.TeacherServiceImpl">
@@ -56,6 +64,11 @@
 	<bean id="teacherLoginAction" class="com.hc.ktdm.handler.LoginAction" scope="prototype">
 		<property name="loginService" ref="teacherLoginService"></property>
 		<!-- <property name="nameTableService" ref="nameTableService"></property> -->
+	</bean>
+	
+	<bean id="managerLoginAction" class="com.hc.ktdm.handler.LoginAction" scope="prototype">
+		<property name="loginService" ref="managerLoginService"></property>
+		
 	</bean>
 	
 	<bean id="attachCoursesAction" class="com.hc.ktdm.handler.AttachCoursesAction" scope="prototype">
