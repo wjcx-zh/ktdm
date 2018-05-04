@@ -1,5 +1,7 @@
 package com.hc.ktdm.dao.impl;
 
+import java.util.List;
+
 import org.hibernate.SessionFactory;
 
 import com.hc.ktdm.dao.ManagerDao;
@@ -13,7 +15,15 @@ public class ManagerDaoImpl implements ManagerDao{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 
+	@Override
+	public List<Manager> selectAll() {
+		String hql="from Manager";
+		
+		return sessionFactory.getCurrentSession().createQuery(hql).list();
+	}
+	
 	@Override
 	public Manager selectByLoginInfo(String name, String password) {
 		String hql="from Manager where mname= :name and password= :pass";
@@ -22,9 +32,9 @@ public class ManagerDaoImpl implements ManagerDao{
 	}
 
 	@Override
-	public void insertManager(Manager manager) {
-		// TODO Auto-generated method stub
-		
+	public int insertManager(Manager manager) {
+		Integer result=(Integer) sessionFactory.getCurrentSession().save(manager);
+		return result>0?1:0;
 	}
 
 	@Override
@@ -46,5 +56,6 @@ public class ManagerDaoImpl implements ManagerDao{
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
+
 
 }

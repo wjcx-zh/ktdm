@@ -183,10 +183,12 @@
         </dependency>
 	
 	
-	
-	
-	
-	
+	<!-- 引入pageHelper分页插件 -->
+  	<dependency>
+	    <groupId>com.github.pagehelper</groupId>
+	    <artifactId>pagehelper</artifactId>
+	    <version>5.0.0</version>
+	</dependency>
 	
 	<!-- 其他相关依赖 -->
 	<!-- https://mvnrepository.com/artifact/antlr/antlr -->

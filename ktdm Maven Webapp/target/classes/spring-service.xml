@@ -46,6 +46,10 @@
 		<property name="teacherDao" ref="teacherDao"/>
 	</bean>
 	
+	<bean id="managerService" class="com.hc.ktdm.service.impl.ManagerServiceImpl">
+		<property name="managerDao" ref="managerDao"/>
+	</bean>
+	
 	<bean id="signUpService" class="com.hc.ktdm.service.impl.SignUpServiceImpl">
 		<property name="studentDao" ref="studentDao"></property>
 	</bean>
@@ -86,5 +90,14 @@
 	
 	<bean id="signUpInfoAction" class="com.hc.ktdm.handler.SignUpInfoAction" scope="prototype">
 		<property name="nameTableService" ref="nameTableService"/>
+	</bean>
+	<bean id="userInfoAction" class="com.hc.ktdm.handler.UserInfoAction" scope="prototype">
+		<property name="teacherService" ref="teacherService"/>
+		<property name="managerService" ref="managerService"/>
+	</bean>
+	
+	<bean id="userAddAction" class="com.hc.ktdm.handler.UserAddAction" scope="prototype">
+		<property name="teacherService" ref="teacherService"/>
+		<property name="managerService" ref="managerService"/>
 	</bean>
 </beans>

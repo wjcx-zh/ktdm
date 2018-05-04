@@ -26,7 +26,7 @@
 		</package>
 		<!-- ajax调用spring中的action -->
 		<package name="ajax_json" namespace="/" extends="json-default">
-		 	
+		 	<global-allowed-methods>regex:.*</global-allowed-methods>
 			<action name="attachCourses" class="attachCoursesAction" method="attach">
 				<result name="success" type="json"/>
 			</action>
@@ -34,6 +34,12 @@
 				<result name="success" type="json"/>
 			</action>
 			<action name="signupInfo" class="signUpInfoAction" method="info">
+				<result name="success" type="json"/>
+			</action>
+			<action name="userInfo_*" class="userInfoAction" method="{1}">
+				<result name="success" type="json"/>
+			</action>
+			<action name="user_*" class="userAddAction" method="{1}">
 				<result name="success" type="json"/>
 			</action>
 		</package>

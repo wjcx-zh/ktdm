@@ -20,14 +20,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="/ktdm/easy_ui/themes/default/easyui.css">   
 	<link rel="stylesheet" type="text/css" href="/ktdm/easy_ui/themes/icon.css">   
 	<link rel="stylesheet" type="text/css" href="/ktdm/css/backstage.css"/>
+	
 	<script type="text/javascript" src="/ktdm/easy_ui/jquery.min.js"></script>   
 	<script type="text/javascript" src="/ktdm/easy_ui/jquery.easyui.min.js"></script> 
 	<script type="text/javascript" src="/ktdm/easy_ui/locale/easyui-lang-zh_CN.js"></script> 
 	<script type="text/javascript" src="/ktdm/js/backstage.js"></script>
-
   </head>
   
   <body>
+  	
     <div id="jc_con">
     	<div id="cc" class="easyui-layout" style="width:500px;height:400px;">   
 		    <div data-options="region:'north',split:false" style="height:100px;background-image: url('/ktdm/imgs/kmbs.png');" class="jc_north">
@@ -57,5 +58,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>  
     	
     </div>
+    
   </body>
 </html>

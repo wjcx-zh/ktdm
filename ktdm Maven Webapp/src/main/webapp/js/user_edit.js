@@ -1,0 +1,49 @@
+$(function(){
+	$("#user_edit").dialog({
+		width:350,
+		title:'信息修改',
+		modal:true,
+		closed:true,
+		buttons:[{
+			text:'提交',
+			handler:function(){
+				//检验
+				$.ajax({
+					url:"/ktdm/userInfo_addMan.action",
+					type:'POST',
+					data:{
+						name:$("input[name='name']").val(),
+						sex:$("input[name='sex']").val(),
+						age:$("input[name='age']").val(),
+						role:1
+					},
+					beforeSend:function(){
+						$.messager.progress({
+							text:'信息修改中....',
+						});
+					},
+					success:function(data,response,status){
+						$.messager.progress('close');
+						if(data>0){
+							$.messager.show({
+								title:'提示',
+								msg:'信息修改成功!',
+							});
+							$("#user_edit").dialog('close').form('reset');
+							$("#man_table").datagrid('reload');
+						}else{
+							$.messager.alert('信息修改失败!','未知错误导致失败,请重试!','warning');
+						}
+					}
+				});
+				
+			}
+		},{
+			text:'取消',
+			handler:function(){
+				$("#user_edit").dialog('close').form('reset');
+			}
+		}],
+	});
+
+});

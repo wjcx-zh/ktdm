@@ -10,3 +10,11 @@
 	2.数据表的定时清空？
 	3.hibernate使用hql ::"delete From Xxx where id in (:idList) | id >0"，发现无法删除?
 
+第五次提交：
+    1.后台页面基本完成设计与搭建
+    2.管理员增删改操作完成
+
+    问题：
+    	1.easyui的引入样式行为失效？｛火狐回退操作后失效，chrome正常；chrome页面样式引入未添加｝
+	2.json格式正确但控制台提示格式问题？
+

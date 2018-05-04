@@ -1,41 +1,137 @@
 $(function(){
-	$("#man_tool").load("tool.html",function(){});
-	$("#wins").load("user_add.html",function(){
-		$("user_add").dialog({
-			width:360,
-			title:'新增管理员',
-			modal:true,
-			closed:true,
-			buttons:[{
-				text:'提交',
-				handler:function(){
-					if($("#user_add").form("validate")){
+	$("#man_tool").load("/ktdm/static_view/tool.html",function(){});
+	$("#wins").html("");
+	$("#wins").load("/ktdm/static_view/user_add.html",function(){});
+	$("#wins").load("/ktdm/static_view/user_edit.html",function(){});
+	$("#man_table").datagrid({
+		url:"/ktdm/userInfo_manInfo.action",
+		fit:true,
+		closeable:true,
+		autoRowHeight:false,
+		fitColumns:true,
+		striped:true,
+		rownumbers:true,
+		border:false,
+		pagination:true,
+		pageSize:3,
+		pageList:[3,5],
+		pageNumber:1,
+		pagePosition:'bottom',
+		sortName:'uid',
+		sortOrder:"desc",
+		toolbar:'#man_tool',
+		showFooter:true,
+		columns:[[
+			{
+				field:'uid',
+				title:'编号',
+				/*width:100,*/
+				checkbox:true
+			},
+			{
+				field:'uname',
+				title:'管理员姓名',
+				width:100,
+			},
+			{
+				field:'sex',
+				title:'性别',
+				width:100,
+			},
+			{
+				field:'age',
+				title:'年龄',
+				width:100,
+			},
+			
+		]],
+	});
+	
+	
+	tool={
+		add:function(){
+			console.log($("#user_add"));
+			$("#user_add").dialog('open');
+		},
+		edit:function(){
+			var rows=$('#man_table').datagrid('getSelections');
+			if(rows.length>1){
+				$.messager.alert('WARNING!','编辑记录只能选定一条数据!','warning');
+			}else if(rows.length==1){
+				//console.log(rows);
+				$.ajax({
+					url:"/ktdm/currentManInfo.action",
+					type:"POST",
+					data:{
+						id:rows[0].uid,
+					},
+					beforeSend:function(){
+						$.messager.progress({
+							text:'数据获取中....',
+						});
+					},
+					success:function(data,response,status){
+						$.messager.progress('close');
+						//console.log(data);
+						if(data){
+							
+							$("#user_edit").form('load',{
+								name:data.name,
+								age:data.age,
+								sex:data.sex,
+								uid:data.id
+								
+							}).dialog('open');
+						}else{
+							$.messager.alert('数据获取失败!','未知错误导致失败,请重试!','warning');
+						}
+					}
+				});
+			}else{
+				$.messager.alert('WARNING!','编辑记录至少选定一条数据!','warning');
+			}
+		},
+		remove:function(){
+			var rows=$("#man_table").datagrid('getSelections');
+			if(rows.length>0){
+				$.messager.confirm('确定操作','确定删除所选记录?',function(flag){
+					if(flag){
+						var ids=[];
+						for(var i=0;i<rows.length;i++){
+							ids.push(rows[i].uid);
+						}
+						
 						$.ajax({
-							url:'/ktdm/user_add.action',
 							type:'POST',
+							url:'/ktdm/removeManger.action',
 							data:{
-								name:$('input[name=name]').val(),
-								password:$('input[name=password]').val(),
-								sex:$('input[name=sex]').val(),
-								age:$('input[name=age]').val(),
-								role:1
+								ids:ids.join(','),
 							},
 							beforeSend:function(){
-								
+								$("#man_table").datagrid('loading');
 							},
-							success:function(){
-								
+							success:function(data){
+								$("#man_table").datagrid('loaded');
+								$("#man_table").datagrid('load');
+								$("#man_table").datagrid('unselectAll');
+								$.messager.show({
+									title:'提示',
+									msg:data+'条记录删除成功!',
+								});
 							},
-						},{
-							text:'取消',
-							handler:function(){
-								$('#user_add').form('reset');
-								$("#user_add").dialog('close');
-							}
 						});
+					}else{
+						$("#man_table").datagrid('unselectAll');
 					}
-				}
-			}],
-		});
-	});
+				});
+			}else{
+				$.messager.alert('提示','请选择要删除的记录!','info');
+			}
+		},
+		/*search:function(){
+			$("#info_query_m").dialog("open");
+		},*/
+	}
+	$.parser.parse("#man_tool");
+	$.parser.parse();
 })

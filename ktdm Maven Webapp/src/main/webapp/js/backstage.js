@@ -1,5 +1,8 @@
 $(function(){
-	
+	$("#tabs").tabs({
+		fit:true,
+		border:false
+	});
     $('#man').click(function(){
     	//console.log($(".jc_center").get(0).dataset.options);
     	console.log($("#man a").text());
@@ -12,14 +15,16 @@ $(function(){
     		$("#tabs").tabs("add",{
     			title:title,
     			closeable:true,
-    			href:'/ktdm/static/manager_table.html', 
+    			href:'/ktdm/static_view/manager_table.html', 
     			
     			cache:false,
     		});
     	}
+    	
     	$(this).addClass('selected');
     	//$("#tabs").load('/ktdm/static/manager_table.html');
-    	
+    	/*$.parser.parse("#man_tool");
+    	$.parser.parse();*/
     });
    
     $('#table').click(function(){
