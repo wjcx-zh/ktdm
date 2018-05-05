@@ -42,7 +42,7 @@ public class Manager {
 	
 	@Override
 	public String toString() {
-		return "Manager [mid=" + mid + ", tname=" + mname + ", sex=" + sex + ", age=" + age + ", password=" + password
+		return "Manager [mid=" + mid + ", mname=" + mname + ", sex=" + sex + ", age=" + age + ", password=" + password
 				+  "]";
 	}
 	

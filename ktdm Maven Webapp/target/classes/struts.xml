@@ -38,8 +38,22 @@
 			</action>
 			<action name="userInfo_*" class="userInfoAction" method="{1}">
 				<result name="success" type="json"/>
+				<!-- <result name="query" type="redirectAction">userQuery_manQuery</result> -->
 			</action>
 			<action name="user_*" class="userAddAction" method="{1}">
+				<result name="success" type="json"/>
+			</action>
+			
+			<action name="info_*" class="currentInfoAction" method="{1}">
+				<result name="success" type="json"/>
+			</action>
+			<action name="userModify_*" class="modifyInfoAction" method="{1}">
+				<result name="success" type="json"/>
+			</action>
+			<action name="userRemove_*" class="removeInfoAction" method="{1}">
+				<result name="success" type="json"/>
+			</action>
+			<action name="userQuery_*" class="userQueryAction" method="{1}">
 				<result name="success" type="json"/>
 			</action>
 		</package>

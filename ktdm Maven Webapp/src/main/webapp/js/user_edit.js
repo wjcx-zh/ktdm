@@ -6,15 +6,19 @@ $(function(){
 		closed:true,
 		buttons:[{
 			text:'提交',
+			iconCls:'icon-ok',
+			plain:true,
 			handler:function(){
 				//检验
 				$.ajax({
-					url:"/ktdm/userInfo_addMan.action",
+					url:"/ktdm/userModify_modifyMan.action",
 					type:'POST',
 					data:{
+						id:$("input[name='id']").val(),
 						name:$("input[name='name']").val(),
 						sex:$("input[name='sex']").val(),
 						age:$("input[name='age']").val(),
+						password:$("input[name='password']").val(),
 						role:1
 					},
 					beforeSend:function(){
@@ -24,7 +28,7 @@ $(function(){
 					},
 					success:function(data,response,status){
 						$.messager.progress('close');
-						if(data>0){
+						if(data.result>0){
 							$.messager.show({
 								title:'提示',
 								msg:'信息修改成功!',
@@ -40,6 +44,8 @@ $(function(){
 			}
 		},{
 			text:'取消',
+			iconCls:'icon-undo',
+			plain:true,
 			handler:function(){
 				$("#user_edit").dialog('close').form('reset');
 			}

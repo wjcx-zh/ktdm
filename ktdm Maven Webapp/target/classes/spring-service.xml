@@ -100,4 +100,22 @@
 		<property name="teacherService" ref="teacherService"/>
 		<property name="managerService" ref="managerService"/>
 	</bean>
+	
+	<bean id="currentInfoAction" class="com.hc.ktdm.handler.CurrentInfoActionOfUser">
+		<property name="teacherService" ref="teacherService"/>
+		<property name="managerService" ref="managerService"/>
+	</bean>
+	<bean id="modifyInfoAction" class="com.hc.ktdm.handler.ModifyInfoAction">
+		<property name="teacherService" ref="teacherService"/>
+		<property name="managerService" ref="managerService"/>
+	</bean>
+	
+	<bean id="removeInfoAction" class="com.hc.ktdm.handler.UserRemoveAction">
+		<property name="teacherService" ref="teacherService"/>
+		<property name="managerService" ref="managerService"/>
+	</bean>
+	<bean id="userQueryAction" class="com.hc.ktdm.handler.UserQueryAction">
+		<property name="teacherService" ref="teacherService"/>
+		<property name="managerService" ref="managerService"/>
+	</bean>
 </beans>

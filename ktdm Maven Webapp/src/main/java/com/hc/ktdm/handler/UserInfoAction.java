@@ -14,6 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.hc.ktdm.domain.DataSet;
+import com.hc.ktdm.domain.QueryInfo;
 import com.hc.ktdm.domain.User;
 
 import com.hc.ktdm.service.ManagerService;
@@ -27,10 +28,25 @@ public class UserInfoAction {
 	private int page;
 	private String sort;
 	private String order;
+	private String name;
+	private Integer from;
+	private Integer to;
+	private String sex;
+	private boolean switcher=false;
 	public String manInfo() throws IOException{
-		
+		/*if(switcher){
+			QueryInfo info=new QueryInfo(name,sex,from,to,rows,page,sort,order);
+			ServletActionContext.getRequest().getSession().setAttribute("queryInfo", info);
+			return "query";
+		}*/
 		PageHelper.startPage(page, rows);
+		System.out.println(name+","+sex+","+from+","+to);
 		List<User> users=managerService.findAll();
+		if(switcher){
+			System.out.println(name+","+sex+","+from+","+to);
+			users=managerService.findByConditions(name, sex, from, to);
+		}
+		System.out.println(name+";"+sex+";"+from+";s"+to);
 		DataSet dataSet=new DataSet();
 		dataSet.setRows(users);
 		PageInfo<User> pageInfo=new PageInfo<User>(users);
@@ -84,13 +100,48 @@ public class UserInfoAction {
 	public void setOrder(String order) {
 		this.order = order;
 	}
-
+	@JSON(serialize=false)
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	@JSON(serialize=false)
+	public Integer getFrom() {
+		return from;
+	}
+	public void setFrom(Integer from) {
+		this.from = from;
+	}
+	@JSON(serialize=false)
+	public Integer getTo() {
+		return to;
+	}
+	public void setTo(Integer to) {
+		this.to = to;
+	}
+	@JSON(serialize=false)
+	public String getSex() {
+		return sex;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
 	@JSON(serialize=false)
 	public TeacherService getTeacherService() {
 		return teacherService;
 	}
 	public void setTeacherService(TeacherService teacherService) {
 		this.teacherService = teacherService;
+	}
+	@JSON(serialize=false)
+	public boolean isSwitcher() {
+		return switcher;
+	}
+	
+	public void setSwitcher(boolean switcher) {
+		this.switcher = switcher;
 	}
 	@JSON(serialize=false)
 	public ManagerService getManagerService() {

@@ -3,6 +3,7 @@ $(function(){
 	$("#wins").html("");
 	$("#wins").load("/ktdm/static_view/user_add.html",function(){});
 	$("#wins").load("/ktdm/static_view/user_edit.html",function(){});
+	$("#wins").load("/ktdm/static_view/man_query.html",function(){});
 	$("#man_table").datagrid({
 		url:"/ktdm/userInfo_manInfo.action",
 		fit:true,
@@ -51,7 +52,7 @@ $(function(){
 	tool={
 		add:function(){
 			console.log($("#user_add"));
-			$("#user_add").dialog('open');
+			$("#user_edit").dialog('open');
 		},
 		edit:function(){
 			var rows=$('#man_table').datagrid('getSelections');
@@ -60,7 +61,7 @@ $(function(){
 			}else if(rows.length==1){
 				//console.log(rows);
 				$.ajax({
-					url:"/ktdm/currentManInfo.action",
+					url:"/ktdm/info_manCurrent.action",
 					type:"POST",
 					data:{
 						id:rows[0].uid,
@@ -73,14 +74,14 @@ $(function(){
 					success:function(data,response,status){
 						$.messager.progress('close');
 						//console.log(data);
-						if(data){
+						if(data.result){
 							
 							$("#user_edit").form('load',{
-								name:data.name,
-								age:data.age,
-								sex:data.sex,
-								uid:data.id
-								
+								name:data.result.uname,
+								age:data.result.age,
+								sex:data.result.sex,
+								id:data.result.uid,
+								password:data.result.password,
 							}).dialog('open');
 						}else{
 							$.messager.alert('数据获取失败!','未知错误导致失败,请重试!','warning');
@@ -103,7 +104,7 @@ $(function(){
 						
 						$.ajax({
 							type:'POST',
-							url:'/ktdm/removeManger.action',
+							url:'/ktdm/userRemove_rmMan.action',
 							data:{
 								ids:ids.join(','),
 							},
@@ -116,7 +117,7 @@ $(function(){
 								$("#man_table").datagrid('unselectAll');
 								$.messager.show({
 									title:'提示',
-									msg:data+'条记录删除成功!',
+									msg:data.result+'条记录删除成功!',
 								});
 							},
 						});
@@ -128,9 +129,9 @@ $(function(){
 				$.messager.alert('提示','请选择要删除的记录!','info');
 			}
 		},
-		/*search:function(){
-			$("#info_query_m").dialog("open");
-		},*/
+		search:function(){
+			$("#man_query").dialog("open");
+		},
 	}
 	$.parser.parse("#man_tool");
 	$.parser.parse();
