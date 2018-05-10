@@ -2,7 +2,7 @@ package com.hc.ktdm.handler;
 
 import java.util.Date;
 
-
+import com.hc.ktdm.domain.User;
 import com.hc.ktdm.model.NameTable;
 import com.hc.ktdm.model.Teacher;
 import com.hc.ktdm.model.Type;
@@ -27,7 +27,7 @@ public class SignUpAction {
 		System.out.println(ServletActionContext.getRequest().getParameter("cname"));
 		*/
 		System.out.println(tid+";"+cid+";"+cname);
-		Teacher teacher =teacherService.findById(tid);
+		User user =teacherService.findById(tid);
 		int typeId=signUpService.Exists(name, snum, cid);
 		Type tp=typeService.findById(typeId);
 		if(nameTableService.Exists(name, snum)){
@@ -37,7 +37,7 @@ public class SignUpAction {
 		nameTable.setCname(cname);
 		nameTable.setSigntime(new Date());
 		nameTable.setSname(name);
-		nameTable.setTname(teacher.getTname());
+		nameTable.setTname(user.getUname());
 		nameTable.setType(tp);
 		nameTable.setSnum(snum);
 		nameTableService.addToTable(nameTable);

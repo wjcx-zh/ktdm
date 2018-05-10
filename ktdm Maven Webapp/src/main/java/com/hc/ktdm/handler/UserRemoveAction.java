@@ -27,6 +27,20 @@ public class UserRemoveAction {
 		}
 		return "success";
 	}	
+	
+	public String rmThr(){
+		if(ids.length()==1){
+			result=teacherService.removeTeacher(Integer.parseInt(ids));
+		}else{
+			String[] idstr=ids.split(",");
+			List<Integer> lists=new ArrayList<Integer>();
+			for(String str:idstr){
+				lists.add(Integer.parseInt(str));
+			}
+			result=teacherService.removeTeachers(lists);
+		}
+		return "success";
+	}	
 	@JSON(serialize=false)
 	public String getIds() {
 		return ids;

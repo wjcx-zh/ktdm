@@ -4,6 +4,7 @@ package com.hc.ktdm.handler;
 
 import org.apache.struts2.json.annotations.JSON;
 
+import com.hc.ktdm.domain.User;
 import com.hc.ktdm.model.Teacher;
 import com.hc.ktdm.service.NameTableService;
 import com.hc.ktdm.service.TeacherService;
@@ -16,8 +17,8 @@ public class AttachCoursesAction {
 	private NameTableService nameTableService;
 	public Object attach(){
 		nameTableService.removeAllInfo();
-		Teacher teacher=teacherService.findById(tid);
-		result=teacher.getCourses();
+		User user=teacherService.findById(tid);
+		result=user.getCourses();
 		//System.out.println(result);
 		return "success";
 	}

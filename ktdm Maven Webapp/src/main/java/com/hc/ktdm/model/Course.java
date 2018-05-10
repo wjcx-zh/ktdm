@@ -2,9 +2,12 @@ package com.hc.ktdm.model;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Course {
 	private Integer cid;
 	private String cname;
+	
 	private Set<Student> students;
 	public Integer getCid() {
 		return cid;
@@ -18,6 +21,7 @@ public class Course {
 	public void setCname(String cname) {
 		this.cname = cname;
 	}
+	@JsonIgnore
 	public Set<Student> getStudents() {
 		return students;
 	}
@@ -26,7 +30,7 @@ public class Course {
 	}
 	@Override
 	public String toString() {
-		return "Course [cid=" + cid + ", cname=" + cname +",students="+students+ "]";
+		return "Course [cid=" + cid + ", cname=" + cname +"]";
 	}
 	
 }

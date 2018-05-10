@@ -1,0 +1,44 @@
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+</head>
+
+
+<table id="thr_table" ></table>
+
+<div id="thr_tool" >
+	<div>
+		<a href="javascript:void(0);" id="thr_tool_add"  onclick="tool.add()">添加</a>
+		<a href="javascript:void(0);" id="thr_tool_edit"  onclick="tool.edit()">修改</a>
+		<a href="javascript:void(0);" id="thr_tool_remove"  onclick="tool.remove()">删除</a>
+		<a href="javascript:void(0);" id="thr_tool_search" onclick="tool.search()">查询</a>
+	</div>
+</div>
+<div id="thr_wins">
+	<form id="thr_add" style="margin:0;padding:5px 0 0 25px;color:#333">
+	
+		<!-- <input type="hidden" name="id" class="textbox" style="width:200px"/> -->
+		<p><label style="width:80px;display:inline-block">姓名:</label><input type="text" name="name" class="textbox" style="width:200px"/></p>
+		<p><label style="width:80px;display:inline-block">初始密码:</label><input type="password" name="password" class="textbox" value="666666" style="width:200px"/></p>
+		<p><label style="width:80px;display:inline-block">性别:</label><input type="text" name="sex" class="textbox" style="width:200px"/></p>
+		<p><label style="width:80px;display:inline-block">年龄:</label><input type="text" name="age" class="textbox" style="width:200px"/></p>
+		
+	</form>
+	
+	<form id="thr_edit" style="margin:0;padding:5px 0 0 25px;color:#333">
+		<input type="hidden" name="id" class="textbox" style="width:200px"/>
+		<p><label style="width:80px;display:inline-block">姓名:</label><input type="text" name="name" class="textbox" style="width:200px"/></p>
+		<p><label style="width:80px;display:inline-block">密码:</label><input type="password" name="password" class="textbox" readonly="readonly" style="width:200px"/></p>
+		<p><label style="width:80px;display:inline-block">性别:</label><input type="text" name="sex" class="textbox" style="width:200px"/></p>
+		<p><label style="width:80px;display:inline-block">年龄:</label><input type="text" name="age" class="textbox" style="width:200px"/></p>
+		
+	</form>
+	
+	<form id="thr_query" style="margin:0;padding:5px 0 0 25px;color:#333">
+		<!-- <input type="hidden" name="id" class="textbox" style="width:200px"/> -->
+		<p><label style="width:80px;display:inline-block">姓名:</label><input type="text" name="name" class="textbox" style="width:200px"/></p>
+		<p><label style="width:80px;display:inline-block">年龄从:</label><input type="text" name="from" class="textbox"  style="width:80px"/>到:<input type="text" name="to" class="textbox"  style="width:80px"/></p>
+		<p><label style="width:80px;display:inline-block">性别:</label><input type="text" name="sex" class="textbox" style="width:200px"/></p>
+		
+	</form>
+</div>
+<script type="text/javascript" src="/ktdm/js/thr_table.js"></script>

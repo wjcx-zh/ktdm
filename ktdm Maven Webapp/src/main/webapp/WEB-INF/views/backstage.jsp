@@ -24,13 +24,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="/ktdm/easy_ui/jquery.min.js"></script>   
 	<script type="text/javascript" src="/ktdm/easy_ui/jquery.easyui.min.js"></script> 
 	<script type="text/javascript" src="/ktdm/easy_ui/locale/easyui-lang-zh_CN.js"></script> 
-	<script type="text/javascript" src="/ktdm/js/backstage.js"></script>
+	
   </head>
   
   <body>
   	
     <div id="jc_con">
-    	<div id="cc" class="easyui-layout" style="width:500px;height:400px;">   
+    	<div id="cc" class="easyui-layout" style="width:520px;height:400px;">   
 		    <div data-options="region:'north',split:false" style="height:100px;background-image: url('/ktdm/imgs/kmbs.png');" class="jc_north">
 		    	<div class="jc_msg" >
 		    		
@@ -38,16 +38,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    	</div>
 		    	
 		    </div>  
-		     <div data-options="region:'south',split:false" style="height:40px;background:#eee;">
+		     <div data-options="region:'south',split:false" style="height:22px;background:#eee;">
 		     	<div id="foot">&copy;wjcx实现</div>
 		     </div> 
 		    <div data-options="region:'west',title:'操作',split:false" style="width:100px;background:#eee;" id="west">
 		    	 <ul>
 		    		<li  class="nav-man" id="man"><a>管理员管理</a></li>
 	                <li  class="nav-stu" id="stu"><a>学生管理</a></li>
-	                <li  class="nav-tch" id="tch"><a>教师管理</a></li>
+	                <li  class="nav-tch" id="thr"><a>教师管理</a></li>
 	                <li  class="nav-cus" id="cus"><a>课程管理</a></li>
+	                <li  class="nav-time" id="link"><a>关系维护</a></li>
 	                <li  class="nav-time" id="time"><a>定时管理</a></li>
+	               
 	            </ul>
 		    	 
 		    	
@@ -60,4 +62,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
     
   </body>
+  <script type="text/javascript" src="/ktdm/js/backstage.js"></script>
 </html>

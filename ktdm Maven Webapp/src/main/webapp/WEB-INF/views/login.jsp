@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    </div>   
 		    <div>   
 		        <label for="password" style="width:60px;display:inline-block;">密    码:</label>   
-		        <input class="easyui-validatebox" type="text" name="password" data-options="validType:'password'" />   
+		        <input class="easyui-validatebox" type="password" name="password" data-options="validType:'password'" />   
 		    </div>   
 		    <input name="login" type="submit" value="登录"/>   
 		</form>  

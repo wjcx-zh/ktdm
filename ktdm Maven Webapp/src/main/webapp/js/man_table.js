@@ -1,9 +1,5 @@
 $(function(){
-	$("#man_tool").load("/ktdm/static_view/tool.html",function(){});
-	$("#wins").html("");
-	$("#wins").load("/ktdm/static_view/user_add.html",function(){});
-	$("#wins").load("/ktdm/static_view/user_edit.html",function(){});
-	$("#wins").load("/ktdm/static_view/man_query.html",function(){});
+	
 	$("#man_table").datagrid({
 		url:"/ktdm/userInfo_manInfo.action",
 		fit:true,
@@ -48,11 +44,12 @@ $(function(){
 		]],
 	});
 	
+	initAll_man();
 	
 	tool={
 		add:function(){
-			console.log($("#user_add"));
-			$("#user_edit").dialog('open');
+			//console.log($("#user_add"));
+			$("#user_add").form().dialog('open');
 		},
 		edit:function(){
 			var rows=$('#man_table').datagrid('getSelections');
@@ -133,6 +130,184 @@ $(function(){
 			$("#man_query").dialog("open");
 		},
 	}
+	
 	$.parser.parse("#man_tool");
 	$.parser.parse();
 })
+
+function initAll_man(){
+	$('#man_tool_add').linkbutton({    
+	    iconCls: 'icon-add' ,
+	    plain:true,
+	});
+	$('#man_tool_edit').linkbutton({    
+	    iconCls: 'icon-edit',
+	    plain:true,
+	});
+	$('#man_tool_remove').linkbutton({    
+	    iconCls: 'icon-remove',
+	    plain:true,
+	});
+	$('#man_tool_search').linkbutton({    
+	    iconCls: 'icon-search',
+	    plain:true,   
+	});
+	$.each($('#user_add p'),function(index,data){
+		//console.log(index+","+data);
+		$(data).css("margin","10px auto");
+	});
+	
+	$("#user_add").dialog({
+		width:360,
+		title:'新增管理员',
+		modal:true,
+		closed:true,
+		buttons:[{
+			text:'提交',
+			iconCls:'icon-ok',
+			plain:true,
+			handler:function(){
+				if($("#user_add").form('validate')){
+					console.log($("input[name='name']").val());
+					$.ajax({
+						url:'/ktdm/user_manAdd.action',
+						type:'POST',
+						data:{
+							name:$("#user_add input[name='name']").val(),
+							password:$("#user_add input[name='password']").val(),
+							sex:$("#user_add input[name='sex']").val(),
+							age:$("#user_add input[name='age']").val(),
+							role:1
+						},
+						beforeSend:function(){
+							$.messager.progress({
+								text:'信息提交中....',
+							});
+						},
+						success:function(data,response,status){
+							$.messager.progress('close');
+							//console.log(data.result+" :"+response+" :"+status);
+							if(data.result>0){
+								$.messager.show({
+									title:'提示',
+									msg:'管理员已成功添加!',
+								});
+								
+								$("#user_add").form('reset');
+								$("#user_add").dialog('close');
+								$("#man_table").datagrid('reload');
+								
+							}else{
+								$("#user_add").form('reset');
+								$("#user_add").dialog('close');
+								$.messager.alert('操作失败!','未知错误导致失败,请重试!','warning');
+							}
+							
+						}
+					});
+				}
+			}
+		},{
+			text:'取消',
+			iconCls:'icon-undo',
+			plain:true,
+			handler:function(){
+				$("#user_add").form('reset');
+				$("#user_add").dialog('close');
+			}
+		}],
+	});
+	
+	
+	$("#user_edit").dialog({
+		width:350,
+		title:'信息修改',
+		modal:true,
+		closed:true,
+		buttons:[{
+			text:'提交',
+			iconCls:'icon-ok',
+			plain:true,
+			handler:function(){
+				//检验
+				$.ajax({
+					url:"/ktdm/userModify_modifyMan.action",
+					type:'POST',
+					data:{
+						id:$("#user_edit input[name='id']").val(),
+						name:$("#user_edit input[name='name']").val(),
+						sex:$("#user_edit input[name='sex']").val(),
+						age:$("#user_edit input[name='age']").val(),
+						password:$("#user_edit input[name='password']").val(),
+						role:1
+					},
+					beforeSend:function(){
+						$.messager.progress({
+							text:'信息修改中....',
+						});
+					},
+					success:function(data,response,status){
+						$.messager.progress('close');
+						if(data.result>0){
+							$.messager.show({
+								title:'提示',
+								msg:'信息修改成功!',
+							});
+							$("#user_edit").dialog('close').form('reset');
+							$("#man_table").datagrid('reload');
+						}else{
+							$.messager.alert('信息修改失败!','未知错误导致失败,请重试!','warning');
+						}
+					}
+				});
+				
+			}
+		},{
+			text:'取消',
+			iconCls:'icon-undo',
+			plain:true,
+			handler:function(){
+				$("#user_edit").dialog('close').form('reset');
+			}
+		}],
+	});
+
+	
+	$("#man_query").dialog({
+		width:350,
+		title:'信息查询',
+		modal:true,
+		closed:true,
+		buttons:[{
+			text:'查询',
+			iconCls: 'icon-search',
+		    plain:true,
+			handler:function(){
+				//检验
+				$("#man_table").datagrid("load",{
+					name:$.trim($("#man_query [name='name']").val()),
+					from:$("#man_query [name='from']").val(),
+					to:$("#man_query [name='to']").val(),
+					sex:$.trim($("#man_query [name='sex']").val()),
+					switcher:true,
+				});
+				$("#man_query").dialog('close').form('reset');
+			}
+		},{
+			text:'取消',
+			iconCls:'icon-undo',
+			plain:true,
+			handler:function(){
+				$("#man_query").dialog('close').form('reset');
+			}
+		}],
+	});
+	
+}
+
+/*
+$("#man_tool").load("/ktdm/static_view/tool.html",function(){});
+$("#wins").html("");
+$("#wins").load("/ktdm/static_view/user_add.html",function(){});
+$("#wins").load("/ktdm/static_view/user_edit.html",function(){});
+$("#wins").load("/ktdm/static_view/man_query.html",function(){});*/

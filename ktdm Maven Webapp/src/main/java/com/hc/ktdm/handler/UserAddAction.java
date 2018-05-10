@@ -3,6 +3,7 @@ package com.hc.ktdm.handler;
 import org.apache.struts2.json.annotations.JSON;
 
 import com.hc.ktdm.model.Manager;
+import com.hc.ktdm.model.Teacher;
 import com.hc.ktdm.service.ManagerService;
 import com.hc.ktdm.service.TeacherService;
 
@@ -21,6 +22,16 @@ public class UserAddAction {
 		man.setPassword(password);
 		man.setSex(sex);
 		result=managerService.addManager(man);
+		return "success";
+	}
+	
+	public String thrAdd(){
+		Teacher thr=new Teacher();
+		thr.setAge(age);
+		thr.setTname(name);
+		thr.setPassword(password);
+		thr.setSex(sex);
+		result=teacherService.addTeacher(thr);
 		return "success";
 	}
 	

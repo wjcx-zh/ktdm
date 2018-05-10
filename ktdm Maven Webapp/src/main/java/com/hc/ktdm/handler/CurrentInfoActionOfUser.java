@@ -20,6 +20,12 @@ public class CurrentInfoActionOfUser {
 		return "success";
 	}
 	
+	public String thrCurrent(){
+		User user=teacherService.findById(id);
+		result=user;
+		return "success";
+	}
+	
 	
 	public Object getResult() {
 		return result;

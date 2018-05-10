@@ -11,9 +11,9 @@
     		<property name="sex" column="sex"/>
     		<property name="age" column="age"/>
     		<property name="password" column="password"/>
-    		<set name="courses" cascade="save-update" fetch="select" lazy="true">
+    		<set name="courses" table="tc_mid" cascade="save-update" fetch="select" lazy="true">
     			<key column="t_id"></key>
-    			<one-to-many class="Course"/>
+    			<many-to-many class="Course" column="c_id"/>
     		</set>
     	</class>
     </hibernate-mapping>

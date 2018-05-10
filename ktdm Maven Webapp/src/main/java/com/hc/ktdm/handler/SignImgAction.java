@@ -12,7 +12,7 @@ public class SignImgAction {
 	private String tid;
 	private String cid;
 	private String cname;
-	private StringBuffer url=new StringBuffer("http://192.168.20.91:8080/ktdm/signup.jsp");
+	private StringBuffer url=new StringBuffer("http://192.168.20.55:8080/ktdm/signup.jsp");
 	
 	public String generate(){
 		String content=url.append("?tid="+tid).append("&cid="+cid).append("&cname="+cname).toString();

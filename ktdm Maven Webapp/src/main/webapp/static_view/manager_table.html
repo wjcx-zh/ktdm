@@ -1,15 +1,44 @@
 <head>
-	<link rel="stylesheet" type="text/css" href="/ktdm/easy_ui/themes/default/easyui.css">   
-	<link rel="stylesheet" type="text/css" href="/ktdm/easy_ui/themes/icon.css">   
-	
+	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
 </head>
-<!-- <div style="height:188px"> -->
 
-	<table id="man_table" ></table>
-<!-- </div> -->
-<div id="man_tool" ></div>
-<div id="wins"></div>
-<!-- <script type="text/javascript" src="/ktdm/easy_ui/jquery.min.js"></script>   
-<script type="text/javascript" src="/ktdm/easy_ui/jquery.easyui.min.js"></script> 
-<script type="text/javascript" src="/ktdm/easy_ui/locale/easyui-lang-zh_CN.js"></script>  -->
+
+<table id="man_table" ></table>
+
+<div id="man_tool" >
+	<div>
+		<a href="javascript:void(0);" id="man_tool_add"  onclick="tool.add()">添加</a>
+		<a href="javascript:void(0);" id="man_tool_edit"  onclick="tool.edit()">修改</a>
+		<a href="javascript:void(0);" id="man_tool_remove"  onclick="tool.remove()">删除</a>
+		<a href="javascript:void(0);" id="man_tool_search" onclick="tool.search()">查询</a>
+	</div>
+</div>
+<div id="wins">
+	<form id="user_add" style="margin:0;padding:5px 0 0 25px;color:#333">
+	
+		<!-- <input type="hidden" name="id" class="textbox" style="width:200px"/> -->
+		<p><label style="width:80px;display:inline-block">姓名:</label><input type="text" name="name" class="textbox" style="width:200px"/></p>
+		<p><label style="width:80px;display:inline-block">初始密码:</label><input type="password" name="password" class="textbox" value="666666" style="width:200px"/></p>
+		<p><label style="width:80px;display:inline-block">性别:</label><input type="text" name="sex" class="textbox" style="width:200px"/></p>
+		<p><label style="width:80px;display:inline-block">年龄:</label><input type="text" name="age" class="textbox" style="width:200px"/></p>
+		
+	</form>
+	
+	<form id="user_edit" style="margin:0;padding:5px 0 0 25px;color:#333">
+		<input type="hidden" name="id" class="textbox" style="width:200px"/>
+		<p><label style="width:80px;display:inline-block">姓名:</label><input type="text" name="name" class="textbox" style="width:200px"/></p>
+		<p><label style="width:80px;display:inline-block">密码:</label><input type="password" name="password" class="textbox" readonly="readonly" style="width:200px"/></p>
+		<p><label style="width:80px;display:inline-block">性别:</label><input type="text" name="sex" class="textbox" style="width:200px"/></p>
+		<p><label style="width:80px;display:inline-block">年龄:</label><input type="text" name="age" class="textbox" style="width:200px"/></p>
+		
+	</form>
+	
+	<form id="man_query" style="margin:0;padding:5px 0 0 25px;color:#333">
+		<!-- <input type="hidden" name="id" class="textbox" style="width:200px"/> -->
+		<p><label style="width:80px;display:inline-block">姓名:</label><input type="text" name="name" class="textbox" style="width:200px"/></p>
+		<p><label style="width:80px;display:inline-block">年龄从:</label><input type="text" name="from" class="textbox"  style="width:80px"/>到:<input type="text" name="to" class="textbox"  style="width:80px"/></p>
+		<p><label style="width:80px;display:inline-block">性别:</label><input type="text" name="sex" class="textbox" style="width:200px"/></p>
+		
+	</form>
+</div>
 <script type="text/javascript" src="/ktdm/js/man_table.js"></script>

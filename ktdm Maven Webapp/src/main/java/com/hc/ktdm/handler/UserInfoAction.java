@@ -33,6 +33,35 @@ public class UserInfoAction {
 	private Integer to;
 	private String sex;
 	private boolean switcher=false;
+	public String thrInfo() throws IOException{
+		/*if(switcher){
+			QueryInfo info=new QueryInfo(name,sex,from,to,rows,page,sort,order);
+			ServletActionContext.getRequest().getSession().setAttribute("queryInfo", info);
+			return "query";
+		}*/
+		PageHelper.startPage(page, rows);
+		System.out.println(name+","+sex+","+from+","+to);
+		List<User> users=teacherService.findAll();
+		if(switcher){
+			System.out.println(name+","+sex+","+from+","+to);
+			users=teacherService.findByConditions(name, sex, from, to);
+		}
+		System.out.println(name+";"+sex+";"+from+";s"+to);
+		DataSet dataSet=new DataSet();
+		dataSet.setRows(users);
+		PageInfo<User> pageInfo=new PageInfo<User>(users);
+		dataSet.setTotal(pageInfo.getTotal());
+		ObjectMapper mapper=new ObjectMapper();
+		String jsonObj=mapper.writeValueAsString(dataSet);
+		HttpServletResponse response = ServletActionContext.getResponse();  
+        //HttpServletRequest request = ServletActionContext.getRequest();
+        response.setCharacterEncoding("utf-8");//指定为utf-8  
+        System.out.println(jsonObj);
+        response.getWriter().write(jsonObj);
+        result=dataSet;
+		return null;
+	}
+	
 	public String manInfo() throws IOException{
 		/*if(switcher){
 			QueryInfo info=new QueryInfo(name,sex,from,to,rows,page,sort,order);

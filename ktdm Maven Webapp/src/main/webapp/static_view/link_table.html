@@ -1,0 +1,41 @@
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+</head>
+<div style="height:138px;width:400px;">
+	<table id="sc_table"></table>
+</div>
+<div style="height:138px;width:400px;">
+	<table id="tc_table" style="height:200px"></table>
+</div>
+
+<div id="sc_tool" >
+	<div>
+		<a href="javascript:void(0);" id="sc_tool_add"  onclick="sctool.add()">添加</a>
+		<a href="javascript:void(0);" id="sc_tool_edit"  onclick="sctool.edit()">修改</a>
+		<a href="javascript:void(0);" id="sc_tool_remove"  onclick="sctool.remove()">删除</a>
+		<!-- <a href="javascript:void(0);" id="crs_tool_search" onclick="tool.search()">查询</a> -->
+	</div>
+</div>
+<div id="tc_tool" >
+	<div>
+		<a href="javascript:void(0);" id="tc_tool_add"  onclick="tctool.add()">添加</a>
+		<a href="javascript:void(0);" id="tc_tool_edit"  onclick="tctool.edit()">修改</a>
+		<a href="javascript:void(0);" id="tc_tool_remove"  onclick="tctool.remove()">删除</a>
+		<!-- <a href="javascript:void(0);" id="crs_tool_search" onclick="tool.search()">查询</a> -->
+	</div>
+</div>
+<div id="link_wins">
+	<form id="sc_add" style="margin:0;padding:5px 0 0 25px;color:#333">
+		<input type="hidden" name="id" class="textbox" style="width:200px"/>
+		<p><label style="width:80px;display:inline-block">学号:</label><input type="text" name="num" class="textbox" style="width:200px"/></p>
+		<p><label style="width:80px;display:inline-block">课程名:</label><input type="text" name="cname" class="textbox" style="width:200px"/></p>
+	</form>
+	
+	<form id="sc_edit" style="margin:0;padding:5px 0 0 25px;color:#333">
+		<input type="hidden" name="id" class="textbox" style="width:200px"/>
+		<p><label style="width:80px;display:inline-block">学号:</label><input type="text" name="num" class="textbox" style="width:200px"/></p>
+		<p><label style="width:80px;display:inline-block">课程名:</label><input type="text" name="cname" class="textbox" style="width:200px"/></p>
+	</form>
+	
+</div>
+<script type="text/javascript" src="/ktdm/js/link_table.js"></script>

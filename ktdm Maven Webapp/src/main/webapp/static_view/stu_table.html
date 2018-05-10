@@ -1,12 +1,42 @@
 <head>
-	<link rel="stylesheet" type="text/css" href="/ktdm/easy_ui/themes/default/easyui.css">   
-	<link rel="stylesheet" type="text/css" href="/ktdm/easy_ui/themes/icon.css">   
-	<!-- <link rel="stylesheet" type="text/css" href="/ktdm/css/backstage.css"/> -->
+	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
 </head>
 
 <table id="stu_table"></table>
-
-<script type="text/javascript" src="/ktdm/easy_ui/jquery.min.js"></script>   
-<script type="text/javascript" src="/ktdm/easy_ui/jquery.easyui.min.js"></script> 
-<script type="text/javascript" src="/ktdm/easy_ui/locale/easyui-lang-zh_CN.js"></script> 
+<div id="stu_tool" >
+	<div>
+		<a href="javascript:void(0);" id="stu_tool_add"  onclick="tool.add()">添加</a>
+		<a href="javascript:void(0);" id="stu_tool_edit"  onclick="tool.edit()">修改</a>
+		<a href="javascript:void(0);" id="stu_tool_remove"  onclick="tool.remove()">删除</a>
+		<a href="javascript:void(0);" id="stu_tool_search" onclick="tool.search()">查询</a>
+	</div>
+</div>
+<div id="stu_wins">
+	<form id="stu_add" style="margin:0;padding:5px 0 0 25px;color:#333">
+		<!-- <input type="hidden" name="id" class="textbox" style="width:200px"/> -->
+		<p><label style="width:80px;display:inline-block">姓名:</label><input type="text" name="name" class="textbox" style="width:200px"/></p>
+		<p><label style="width:80px;display:inline-block">学号:</label><input type="text" name="snum" class="textbox" style="width:200px"/></p>
+		<p><label style="width:80px;display:inline-block">性别:</label><input type="text" name="sex" class="textbox" style="width:200px"/></p>
+		<!-- <p><label style="width:80px;display:inline-block">课程:</label><input type="text" name="courses" class="easyui-tagbox" style="width:200px"/></p> -->
+		
+	</form>
+	
+	<form id="stu_edit" style="margin:0;padding:5px 0 0 25px;color:#333">
+		<input type="hidden" name="id" class="textbox" style="width:200px"/>
+		<p><label style="width:80px;display:inline-block">姓名:</label><input type="text" name="name" class="textbox" style="width:200px"/></p>
+		<p><label style="width:80px;display:inline-block">学号:</label><input type="text" name="snum" class="textbox"  style="width:200px"/></p>
+		<p><label style="width:80px;display:inline-block">性别:</label><input type="text" name="sex" class="textbox" style="width:200px"/></p>
+		<!-- <p><label style="width:80px;display:inline-block">课程:</label><input type="text" name="courses" class="easyui-tagbox" style="width:200px"/></p> -->
+		
+	</form>
+	
+	<form id="stu_query" style="margin:0;padding:5px 0 0 25px;color:#333">
+		<!-- <input type="hidden" name="id" class="textbox" style="width:200px"/> -->
+		<p><label style="width:80px;display:inline-block">姓名:</label><input type="text" name="name" class="textbox" style="width:200px"/></p>
+		<p><label style="width:80px;display:inline-block">课程:</label><input type="text" name="course" class="textbox"  style="width:200px"/></p>
+		<p><label style="width:80px;display:inline-block">学号:</label><input type="text" name="snum" class="textbox"  style="width:200px"/></p>
+		<p><label style="width:80px;display:inline-block">性别:</label><input type="text" name="sex" class="textbox" style="width:200px"/></p>
+		
+	</form>
+</div>
 <script type="text/javascript" src="/ktdm/js/stu_table.js"></script>

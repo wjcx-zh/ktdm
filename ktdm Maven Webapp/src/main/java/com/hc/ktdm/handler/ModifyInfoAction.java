@@ -3,6 +3,7 @@ package com.hc.ktdm.handler;
 import org.apache.struts2.json.annotations.JSON;
 
 import com.hc.ktdm.model.Manager;
+import com.hc.ktdm.model.Teacher;
 import com.hc.ktdm.service.ManagerService;
 import com.hc.ktdm.service.TeacherService;
 
@@ -25,6 +26,18 @@ public class ModifyInfoAction {
 		man.setPassword(password);
 		System.out.println(man);
 		result=managerService.modifyManager(man);
+		return "success";
+	}
+	
+	public String modifyThr(){
+		Teacher thr=new Teacher();
+		thr.setAge(age);
+		thr.setTid(id);
+		thr.setTname(name);
+		thr.setSex(sex);
+		thr.setPassword(password);
+		System.out.println(thr);
+		result=teacherService.modifyTeacher(thr);
 		return "success";
 	}
 	

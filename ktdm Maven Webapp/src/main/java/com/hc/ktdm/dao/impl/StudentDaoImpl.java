@@ -1,5 +1,7 @@
 package com.hc.ktdm.dao.impl;
 
+import java.util.List;
+
 import org.hibernate.SessionFactory;
 
 import com.hc.ktdm.dao.StudentDao;
@@ -10,8 +12,8 @@ public class StudentDaoImpl implements StudentDao{
 	private SessionFactory sessionFactory;
 	@Override
 	public Student selectById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return sessionFactory.getCurrentSession().get(Student.class, id);
 	}
 
 	@Override
@@ -28,21 +30,21 @@ public class StudentDaoImpl implements StudentDao{
 	}
 
 	@Override
-	public void insertStudent(Student student) {
-		// TODO Auto-generated method stub
-		
+	public int insertStudent(Student student) {
+		int ret=(Integer)sessionFactory.getCurrentSession().save(student);
+		return ret!=0?1:0;
 	}
 
 	@Override
-	public void deleteStudent(Student student) {
-		// TODO Auto-generated method stub
-		
+	public int deleteStudent(Student student) {
+		sessionFactory.getCurrentSession().delete(student);
+		return 1;
 	}
 
 	@Override
-	public void updateStudent(Student student) {
-		// TODO Auto-generated method stub
-		
+	public int updateStudent(Student student) {
+		sessionFactory.getCurrentSession().update(student);
+		return 1;
 	}
 
 	public SessionFactory getSessionFactory() {
@@ -51,6 +53,12 @@ public class StudentDaoImpl implements StudentDao{
 
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
+	}
+
+	@Override
+	public List<Student> selectAll() {
+		String hql="from Student";
+		return sessionFactory.getCurrentSession().createQuery(hql).list();
 	}
 
 }

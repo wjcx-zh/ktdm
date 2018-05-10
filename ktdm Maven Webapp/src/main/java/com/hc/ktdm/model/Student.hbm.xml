@@ -10,7 +10,7 @@
     		<property name="sname" column="sname"/>
     		<property name="sex" column="sex"/>
     		<property name="snum" column="snum"/>
-    		<set name="courses" table="sc_mid" cascade="save-update">
+    		<set name="courses" table="sc_mid" cascade="none">
     			<key  column="s_id"/>
     			<many-to-many class="Course" column="c_id"/>
     		</set>

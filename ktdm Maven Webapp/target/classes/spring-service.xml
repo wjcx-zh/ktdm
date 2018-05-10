@@ -33,6 +33,13 @@
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	
+	<bean id="courseDao" class="com.hc.ktdm.dao.impl.CourseDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	
+
+	
 	<!-- service层的bean -->
 	<bean id="teacherLoginService" class="com.hc.ktdm.service.impl.TeacherLoginServiceImpl">
 		<property name="teacherDao" ref="teacherDao"/>
@@ -60,6 +67,14 @@
 	
 	<bean id="typeService" class="com.hc.ktdm.service.impl.TypeServiceImpl">
 		<property name="typeDao" ref="typeDao"></property>
+	</bean>
+	
+	<bean id="studentService" class="com.hc.ktdm.service.impl.StudentServiceImpl">
+		<property name="studentDao" ref="studentDao"/>
+	</bean>
+	
+	<bean id="courseService" class="com.hc.ktdm.service.impl.CourseServiceImpl">
+		<property name="courseDao" ref="courseDao"/>
 	</bean>
 	
 	<!-- action的bean -->
@@ -117,5 +132,18 @@
 	<bean id="userQueryAction" class="com.hc.ktdm.handler.UserQueryAction">
 		<property name="teacherService" ref="teacherService"/>
 		<property name="managerService" ref="managerService"/>
+	</bean>
+	
+	<bean id="crsInfoAction" class="com.hc.ktdm.handler.CrsInfoAction" >
+		<property name="courseService" ref="courseService"/>
+	</bean>
+	<bean id="stuInfoAction" class="com.hc.ktdm.handler.StuInfoAction">
+		<property name="studentService" ref="studentService"/>
+		<property name="courseService" ref="courseService"/>
+	</bean>
+	<bean id="linkInfoAction" class="com.hc.ktdm.handler.LinkInfoAction">
+		<property name="studentService" ref="studentService"/>
+		<property name="courseService" ref="courseService"/>
+		<property name="teacherService" ref="teacherService"/>
 	</bean>
 </beans>

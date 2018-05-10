@@ -2,6 +2,8 @@ package com.hc.ktdm.model;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Student {
 	private Integer sid;
 	private String sname;
@@ -32,6 +34,7 @@ public class Student {
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
+	
 	public Set<Course> getCourses() {
 		return courses;
 	}

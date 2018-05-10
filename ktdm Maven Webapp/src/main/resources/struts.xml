@@ -56,5 +56,15 @@
 			<action name="userQuery_*" class="userQueryAction" method="{1}">
 				<result name="success" type="json"/>
 			</action>
+			<action name="crs_*" class="crsInfoAction" method="{1}">
+				<result name="success" type="json"/>
+			</action>
+			<action name="stu_*" class="stuInfoAction" method="{1}">
+				<result name="success" type="json"/>
+			</action>
+			<action name="link_*" class="linkInfoAction" method="{1}">
+				<result name="success" type="json"/>
+				<result name="noexist" type="json"/>
+			</action>
 		</package>
 	</struts>
